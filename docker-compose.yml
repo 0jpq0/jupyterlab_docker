@@ -1,0 +1,9 @@
+jupyterlab:
+  build: ./jupyterlab
+  ports:
+    - "8888:8888"
+  volumes:
+    - ./data:/opt/app/data
+  environment:
+    - password=jupyterlab
+  entrypoint: sh -c 'python set_password.py ${password};jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --notebook-dir=/opt/app/data --allow-root'
